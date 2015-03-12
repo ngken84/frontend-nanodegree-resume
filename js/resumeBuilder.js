@@ -44,7 +44,30 @@ $("#workExperience").append(HTMLworkStart);
 }
 
 {
-	var education = {};
+	var education = {
+		"schools" : [
+			{
+				"name" : "Johns Hopkins University",
+				"city" : "Baltimore, Maryland",
+				"degree" : "BA",
+				"major" : ["Biomedical Engineering"]
+			},
+			{
+				"name" : "UC Santa Cruz",
+				"city" : "Santa Cruz, California",
+				"degree" : "Certificate in Computer Programming with Honors",
+				"major" : ["Computer Science"]
+			}
+		]
+		"onlineCourses" : [
+			{
+				"title" : "Web Development",
+				"school" : "Udacity",
+				"degree" : "Verfied Certificate of Completion",
+				"date" : "2014"
+			}
+		]
+	};
 	education["school"] = "UC Santa Cruz Extension";
 	education["years attended"] = "2011-2012";
 	education["city"] = "Santa Cruz, California";
