@@ -1,5 +1,3 @@
-$("#main").append("Ken Ng");
-
 var bio =
 {
 	"name" : "Ken Ng",
@@ -10,14 +8,41 @@ var bio =
 	"skills" : ["HTML5", "CSS3", "JavaScript", "Python", "Java", "C++", "Android Developer"]
 };
 
+var work =
+{
+	"position" : "Software Developer",
+	"employer" : "California Legislative Data Center",
+	"work dates" : "September 2013 - Present",
+	"city" : "Sacramento, California",
+	"work description" : ["Collaborate with a team to create a suite of applications to organize Committee Hearings and Bills", "Developed Android Application to Committee Members to view and annotate bills"]
+}
 
 var formattedContact = HTMLcontactGeneric.replace("%contact%", bio["contact info"]);
 
 $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
 $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
 $("#education").append(HTMLskillsStart);
+console.log(bio.skills);
 for(i = 0, x = bio.skills.length; i < x; ++i)
 {
 	$("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
 }
+
+$("#workExperience").append(HTMLworkStart);
+{
+	var workEntry = $(".work-entry");
+	workEntry.append(HTMLworkEmployer.replace("%data%", work.employer) + HTMLworkTitle.replace("%data%", work.position));
+	workEntry.append(HTMLworkDates.replace("%data%", work["work dates"]));
+	workEntry.append(HTMLworkLocation.replace("%data%", work.city));
+	var workDescriptions = work["work description"];
+	console.log(workDescriptions);
+	for(i = 0, x = workDescriptions.length; i < x; i++)
+	{
+		workEntry.append(HTMLworkDescription.replace("%data%", workDescriptions[i]));
+	}
+}
+
+
+
+
 
