@@ -2,14 +2,101 @@ var bio =
 {
 	"name" : "Ken Ng",
 	"role" : "Front-End Web Developer",
-	"contact info" : "ng.ken84@gmail.com",
+	"contacts" :
+	{
+		"mobile" : "(650)269-3919",
+		"email" : "ng.ken84@gmail.com",
+		"github" : "https://github.com/ngken84",
+		"location" : "Sacramento, California"
+	},
 	"picture url" : "http://placehold.it/500x500",
-	"welcome message" : "Welcome Potential Employers, Have some cookies",
-	"skills" : ["HTML5", "CSS3", "JavaScript", "Python", "Java", "C++", "Android Developer"]
+	"welcomeMessage" : "Welcome Future Employers!",
+	"biopic" : "../images/profile.jpg",
+	"display" : function() {}
 };
 
+var education = {
+	"schools" : [
+		{
+			"name" : "Johns Hopkins University",
+			"city" : "Baltimore, Maryland",
+			"degree" : "BS",
+			"major" : ["Biomedical Engineering"],
+			"dates" : 2008
+
+		},
+		{
+			"name" : "UC Santa Cruz",
+			"city" : "Santa Cruz, California",
+			"degree" : "Certificate in Computer Programming with Honors",
+			"major" : ["Computer Science"],
+			"dates" : 2012
+		}
+	]
+	"onlineCourses" : [
+		{
+			"title" : "Web Development",
+			"school" : "Udacity",
+			"degree" : "Verfied Certificate of Completion",
+			"date" : 2014,
+			"url" : "http://www.udacity.com"
+		}
+	],
+	"display" : function () {}
+};
+
+var work =
+{
+	"job" : [
+		{
+			"employer" : "California Legislative Data Center",
+			"position" : "Software Developer",
+			"work dates" : "Fall 2013 - Present",
+			"city" : "Sacramento, California",
+			"description" : ["Collaborate with a team to create a suite of applications to organize Committee Hearings and Bills",
+				"Developed Android Application to Committee Members to view and annotate bills"];
+		},
+		{
+			"employer" : "Sony Computer Entertainement",
+			"position" : "Senior Tester",
+			"work dates" : "Fall 2011 - Winter 2012",
+			"city" : "Foster City, California",
+			"description" : ["Ensured software released on PlayStation platforms adhered to SCEA's Technical Requirements Checklist",
+						"Discovered, researched, and summarized violations of SCEA's TRCs both individually and in a team environment",
+						"Created a Format QA tester wiki site that consolidates information needed to thoroughly complete test cases in SCEA's TRCs",
+						"Earned top performer on multiple occasions"]
+		},
+		{
+			"employer" : "Weil Gotshals & Manges LLP",
+			"position" : "Paralegal",
+			"work dates" : "Winter 2007 - Spring 2011",
+			"city" : "Redwood City, Sacramento",
+			"description" : ["Ensured attorneys had the materials needed for proceedings such as depositions and trials",
+						"Assisted with the drafting of attorney briefs, presentations and expert reports",
+						"Performed special assignments at attorney request including research and document review",
+						"Managed and organized large record databases for multiple litigation cases"]
+		}
+	],
+	"display" : function() {}
+};
+
+var projects =
+{
+	"projects" : [
+		{
+			"title" : "Salon Valenti App",
+			"dates" : "February 2013 - April 2013",
+			"description" : "A hybrid Android application that allows users to
+			schedule appointments, view staff pages, view Yelp reviews, contact
+			the Salon and retrieve directions to the Salon. Create, edit and delete user profiles using
+			a SQLite database. "
+		}
+	],
+	"display" : function() {}
+}
 
 
+/*
 var formattedContact = HTMLcontactGeneric.replace("%contact%", bio["contact info"]);
 
 $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
@@ -24,7 +111,7 @@ for(i = 0, x = bio.skills.length; i < x; ++i)
 $("#workExperience").append(HTMLworkStart);
 
 {
-	var work = {};
+
 	work.position = "Software Developer";
 	work.employer = "California Legislative Data Center";
 	work["work dates"] = "September 2013 - Present";
@@ -44,30 +131,7 @@ $("#workExperience").append(HTMLworkStart);
 }
 
 {
-	var education = {
-		"schools" : [
-			{
-				"name" : "Johns Hopkins University",
-				"city" : "Baltimore, Maryland",
-				"degree" : "BA",
-				"major" : ["Biomedical Engineering"]
-			},
-			{
-				"name" : "UC Santa Cruz",
-				"city" : "Santa Cruz, California",
-				"degree" : "Certificate in Computer Programming with Honors",
-				"major" : ["Computer Science"]
-			}
-		]
-		"onlineCourses" : [
-			{
-				"title" : "Web Development",
-				"school" : "Udacity",
-				"degree" : "Verfied Certificate of Completion",
-				"date" : "2014"
-			}
-		]
-	};
+
 	education["school"] = "UC Santa Cruz Extension";
 	education["years attended"] = "2011-2012";
 	education["city"] = "Santa Cruz, California";
@@ -75,7 +139,7 @@ $("#workExperience").append(HTMLworkStart);
 	var schoolEntry = $("#education");
 	schoolEntry.append(education["school"]);
 }
-
+*/
 
 
 
