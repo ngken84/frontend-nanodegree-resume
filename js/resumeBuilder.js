@@ -12,6 +12,7 @@ var bio =
 	"picture url" : "http://placehold.it/500x500",
 	"welcomeMessage" : "Welcome Future Employers!",
 	"biopic" : "../images/profile.jpg",
+	"skills" : ["C++", "Java", "Python", "HTML5", "CSS3", "JavaScript", "Android", "iOS"],
 	"display" : function() {}
 };
 
@@ -32,7 +33,7 @@ var education = {
 			"major" : ["Computer Science"],
 			"dates" : 2012
 		}
-	]
+	],
 	"onlineCourses" : [
 		{
 			"title" : "Web Development",
@@ -54,7 +55,7 @@ var work =
 			"work dates" : "Fall 2013 - Present",
 			"city" : "Sacramento, California",
 			"description" : ["Collaborate with a team to create a suite of applications to organize Committee Hearings and Bills",
-				"Developed Android Application to Committee Members to view and annotate bills"];
+				"Developed Android Application to Committee Members to view and annotate bills"]
 		},
 		{
 			"employer" : "Sony Computer Entertainement",
@@ -86,14 +87,26 @@ var projects =
 		{
 			"title" : "Salon Valenti App",
 			"dates" : "February 2013 - April 2013",
-			"description" : "A hybrid Android application that allows users to
-			schedule appointments, view staff pages, view Yelp reviews, contact
-			the Salon and retrieve directions to the Salon. Create, edit and delete user profiles using
-			a SQLite database. "
+			"description" : "A hybrid Android application that allows users to schedule appointments, view staff pages, view Yelp reviews, contact the Salon and retrieve directions to the Salon. Create, edit and delete user profiles using a SQLite database."
 		}
 	],
 	"display" : function() {}
 }
+
+
+// Append Skills
+
+if(bio.skills && bio.skills.length > 0)
+{
+	$('#header').append(HTMLskillsStart);
+	for(i = 0, x = bio.skills.length; i < x; ++i)
+	{
+		$('#skills').append(HTMLskills.replace("%data%", bio.skills[i]));
+	}
+}
+
+
+
 
 
 /*
