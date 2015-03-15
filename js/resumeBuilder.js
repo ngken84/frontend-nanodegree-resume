@@ -90,7 +90,22 @@ var projects =
 			"description" : "A hybrid Android application that allows users to schedule appointments, view staff pages, view Yelp reviews, contact the Salon and retrieve directions to the Salon. Create, edit and delete user profiles using a SQLite database."
 		}
 	],
-	"display" : function() {}
+	"display" : function() {
+		var projectDiv = $('#projects');
+		for(projectIndex in this.projects)
+		{
+			projectDiv.append(HTMLprojectStart);
+			var projEntry = $('.project-entry').last();
+			var currProj = this.projects[projectIndex];
+			projEntry.append(HTMLprojectTitle.replace('%data%', currProj.title));
+			projEntry.append(HTMLprojectDates.replace('%data%', currProj.dates));
+			projEntry.append(HTMLprojectDescription.replace('%data%', currProj.description));
+			for(projImgIndex in currProj.images)
+			{
+				projEntry.append(HTMLprojectImage.replace('%data%', currProj.images[projImgIndex]));
+			}
+		}
+	}
 }
 
 // Append Name
@@ -147,7 +162,8 @@ function inName()
 	return splitName.join(" ");
 }
 
-
+// Append Projects
+projects.display();
 
 
 /*
