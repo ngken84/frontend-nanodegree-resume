@@ -1,3 +1,5 @@
+var data = '%data%';
+
 var bio =
 {
 	"name" : "Ken Ng",
@@ -7,20 +9,39 @@ var bio =
 		"mobile" : "(650)269-3919",
 		"email" : "ng.ken84@gmail.com",
 		"github" : "https://github.com/ngken84",
-		"location" : "Sacramento, California"
+		"location" : "Sacramento, CA"
 	},
-	"picture url" : "http://placehold.it/500x500",
+	"picture url" : "images/ken.jpg",
 	"welcomeMessage" : "Welcome Future Employers!",
-	"biopic" : "../images/profile.jpg",
+	"biopic" : "images/ken.jpg",
 	"skills" : ["C++", "Java", "Python", "HTML5", "CSS3", "JavaScript", "Android", "iOS"],
-	"display" : function() {}
+	"display" : function() {
+		var header = $('#header');
+		header.prepend(HTMLwelcomeMsg.replace(data, this.welcomeMessage));
+		header.prepend(HTMLbioPic.replace(data, this.biopic));
+		header.prepend(HTMLheaderRole.replace(data,this.role));
+		header.prepend(HTMLheaderName.replace(data,this.name));
+		var topContacts = $('#topContacts');
+		topContacts.append(HTMLmobile.replace(data, this.contacts.mobile));
+		topContacts.append(HTMLemail.replace(data, this.contacts.email));
+		topContacts.append(HTMLgithub.replace(data, this.contacts.github));
+		topContacts.append(HTMLlocation.replace(data, this.contacts.location));
+		if(this.skills && this.skills.length > 0)
+		{
+			$('#header').append(HTMLskillsStart);
+			for(i = 0, x = this.skills.length; i < x; ++i)
+			{
+				$('#skills').append(HTMLskills.replace(data, this.skills[i]));
+			}
+		}
+	}
 };
 
 var education = {
 	"schools" : [
 		{
 			"name" : "Johns Hopkins University",
-			"city" : "Baltimore, Maryland",
+			"location" : "Baltimore, MD",
 			"degree" : "BS",
 			"major" : ["Biomedical Engineering"],
 			"dates" : 2008
@@ -28,7 +49,7 @@ var education = {
 		},
 		{
 			"name" : "UC Santa Cruz",
-			"city" : "Santa Cruz, California",
+			"location" : "Santa Cruz, CA",
 			"degree" : "Certificate in Computer Programming with Honors",
 			"major" : ["Computer Science"],
 			"dates" : 2012
@@ -41,9 +62,43 @@ var education = {
 			"degree" : "Verfied Certificate of Completion",
 			"date" : 2014,
 			"url" : "http://www.udacity.com"
+		},
+		{
+			"title" : "Intro to HTML and CSS",
+			"school" : "Udacity",
+			"degree" : "Verfied Certificate of Completion",
+			"date" : 2015,
+			"url" : "http://www.udacity.com"
 		}
 	],
-	"display" : function () {}
+	"display" : function () {
+		var eduDiv = $('#education');
+		for(var schoolIndex in this.schools)
+		{
+			eduDiv.append(HTMLschoolStart);
+			var schoolDiv = $('.education-entry:last');
+			var currentSchool = this.schools[schoolIndex];
+			schoolDiv.append(HTMLschoolName.replace(data, currentSchool.name) + HTMLschoolDegree.replace(data, currentSchool.degree));
+			schoolDiv.append(HTMLschoolDates.replace(data, 'Graduated ' + currentSchool.dates));
+			schoolDiv.append(HTMLschoolLocation.replace(data, currentSchool.location));
+			schoolDiv.append(HTMLschoolMajor.replace(data, currentSchool.major.join(", ")));
+		}
+		if(this.onlineCourses.length > 0)
+		{
+			eduDiv.append(HTMLonlineClasses);
+			for(var schoolIndex in this.onlineCourses)
+			{
+				var onlineClass = this.onlineCourses[schoolIndex];
+				eduDiv.append(HTMLschoolStart);
+				var schoolDiv = $('.education-entry:last');
+				schoolDiv.append(HTMLonlineTitle.replace(data, onlineClass.title) + HTMLonlineSchool.replace(data, onlineClass.school));
+				schoolDiv.append(HTMLonlineDates.replace(data, 'Completed ' + onlineClass.date));
+				schoolDiv.append(HTMLonlineURL.replace(data, onlineClass.url));
+			}
+		}
+
+
+	}
 };
 
 var work =
@@ -53,7 +108,7 @@ var work =
 			"employer" : "California Legislative Data Center",
 			"position" : "Software Developer",
 			"work dates" : "Fall 2013 - Present",
-			"city" : "Sacramento, California",
+			"city" : "Sacramento, CA",
 			"description" : ["Collaborate with a team to create a suite of applications to organize Committee Hearings and Bills",
 				"Developed Android Application to Committee Members to view and annotate bills"]
 		},
@@ -61,7 +116,7 @@ var work =
 			"employer" : "Sony Computer Entertainement",
 			"position" : "Senior Tester",
 			"work dates" : "Fall 2011 - Winter 2012",
-			"city" : "Foster City, California",
+			"city" : "Foster City, CA",
 			"description" : ["Ensured software released on PlayStation platforms adhered to SCEA's Technical Requirements Checklist",
 						"Discovered, researched, and summarized violations of SCEA's TRCs both individually and in a team environment",
 						"Created a Format QA tester wiki site that consolidates information needed to thoroughly complete test cases in SCEA's TRCs",
@@ -71,14 +126,25 @@ var work =
 			"employer" : "Weil Gotshals & Manges LLP",
 			"position" : "Paralegal",
 			"work dates" : "Winter 2007 - Spring 2011",
-			"city" : "Redwood City, Sacramento",
+			"city" : "Redwood City, CA",
 			"description" : ["Ensured attorneys had the materials needed for proceedings such as depositions and trials",
 						"Assisted with the drafting of attorney briefs, presentations and expert reports",
 						"Performed special assignments at attorney request including research and document review",
 						"Managed and organized large record databases for multiple litigation cases"]
 		}
 	],
-	"display" : function() {}
+	"display" : function() {
+		for(var index in work.job)
+		{
+			$('#workExperience').append(HTMLworkStart);
+			var workEntry = $('.work-entry').last();
+			var workJob = this.job[index];
+			workEntry.append(HTMLworkEmployer.replace('%data%', workJob.employer) + HTMLworkTitle.replace('%data%', work.job[index].position));
+			workEntry.append(HTMLworkDates.replace('%data%', workJob['work dates']));
+			workEntry.append(HTMLworkLocation.replace('%data%', workJob.city));
+			workEntry.append(HTMLworkDescription.replace('%data%', workJob.description.join("<br>")));
+		}
+	}
 };
 
 var projects =
@@ -92,7 +158,7 @@ var projects =
 	],
 	"display" : function() {
 		var projectDiv = $('#projects');
-		for(projectIndex in this.projects)
+		for(var projectIndex in this.projects)
 		{
 			projectDiv.append(HTMLprojectStart);
 			var projEntry = $('.project-entry').last();
@@ -108,39 +174,15 @@ var projects =
 	}
 }
 
-// Append Name
-$('#header').prepend(HTMLheaderRole.replace('%data%',bio.role));
-$('#header').prepend(HTMLheaderName.replace('%data%',bio.name));
+// Append Everything
+bio.display();
+work.display();
+projects.display();
+education.display();
 
 
-// Append Skills
+// Click Listener
 
-if(bio.skills && bio.skills.length > 0)
-{
-	$('#header').append(HTMLskillsStart);
-	for(i = 0, x = bio.skills.length; i < x; ++i)
-	{
-		$('#skills').append(HTMLskills.replace("%data%", bio.skills[i]));
-	}
-}
-
-// Append Employers
-
-function displayWork()
-{
-	for(index in work.job)
-	{
-		$('#workExperience').append(HTMLworkStart);
-		var workEntry = $('.work-entry').last();
-		var workJob = work.job[index];
-		workEntry.append(HTMLworkEmployer.replace('%data%', workJob.employer) + HTMLworkTitle.replace('%data%', work.job[index].position));
-		workEntry.append(HTMLworkDates.replace('%data%', workJob['work dates']));
-		workEntry.append(HTMLworkLocation.replace('%data%', workJob.city));
-		workEntry.append(HTMLworkDescription.replace('%data%', workJob.description.join("<br>")));
-	}
-}
-
-displayWork();
 
 var locationArray = [];
 
@@ -162,8 +204,9 @@ function inName()
 	return splitName.join(" ");
 }
 
-// Append Projects
-projects.display();
+// Append map
+
+$('#mapDiv').append(googleMap);
 
 
 /*
