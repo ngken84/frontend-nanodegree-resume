@@ -93,6 +93,10 @@ var projects =
 	"display" : function() {}
 }
 
+// Append Name
+$('#header').prepend(HTMLheaderRole.replace('%data%',bio.role));
+$('#header').prepend(HTMLheaderName.replace('%data%',bio.name));
+
 
 // Append Skills
 
@@ -129,6 +133,21 @@ $(document).click(function(loc) {
 	locationArray.push({"X" : loc.pageX, "Y" : loc.pageY});
 	console.log(locationArray);
 });
+
+// Append internationalizeButton
+
+$('#main').append(internationalizeButton);
+
+function inName()
+{
+	var name = $('#name').text();
+	var splitName = name.split(' ');
+	splitName[0] = splitName[0].slice(0,1).toUpperCase() + splitName[0].slice(1).toLowerCase();
+	splitName[1] = splitName[1].toUpperCase();
+	return splitName.join(" ");
+}
+
+
 
 
 /*
