@@ -107,17 +107,28 @@ if(bio.skills && bio.skills.length > 0)
 
 // Append Employers
 
-for(index in work.job)
+function displayWork()
 {
-	$('#workExperience').append(HTMLworkStart);
-	var workEntry = $('.work-entry').last();
-	var workJob = work.job[index];
-	workEntry.append(HTMLworkEmployer.replace('%data%', workJob.employer) + HTMLworkTitle.replace('%data%', work.job[index].position));
-	workEntry.append(HTMLworkDates.replace('%data%', workJob['work dates']));
-	workEntry.append(HTMLworkLocation.replace('%data%', workJob.city));
-	workEntry.append(HTMLworkDescription.replace('%data%', workJob.description.join("<br>")));
+	for(index in work.job)
+	{
+		$('#workExperience').append(HTMLworkStart);
+		var workEntry = $('.work-entry').last();
+		var workJob = work.job[index];
+		workEntry.append(HTMLworkEmployer.replace('%data%', workJob.employer) + HTMLworkTitle.replace('%data%', work.job[index].position));
+		workEntry.append(HTMLworkDates.replace('%data%', workJob['work dates']));
+		workEntry.append(HTMLworkLocation.replace('%data%', workJob.city));
+		workEntry.append(HTMLworkDescription.replace('%data%', workJob.description.join("<br>")));
+	}
 }
 
+displayWork();
+
+var locationArray = [];
+
+$(document).click(function(loc) {
+	locationArray.push({"X" : loc.pageX, "Y" : loc.pageY});
+	console.log(locationArray);
+});
 
 
 /*
