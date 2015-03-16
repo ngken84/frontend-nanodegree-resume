@@ -179,11 +179,9 @@ bio.display();
 work.display();
 projects.display();
 education.display();
-
+$('#mapDiv').append(googleMap);
 
 // Click Listener
-
-
 var locationArray = [];
 
 $(document).click(function(loc) {
@@ -204,9 +202,6 @@ function inName()
 	return splitName.join(" ");
 }
 
-// Append map
-
-$('#mapDiv').append(googleMap);
 
 
 /*
