@@ -126,6 +126,10 @@ a {
   background-color: #193d00;
 }
 
+.dark-gray-color {
+  color: #4A4A4A;
+}
+
 .flex-box {
   display: -webkit-flex;
   display: flex;
