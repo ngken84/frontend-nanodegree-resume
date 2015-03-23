@@ -13,12 +13,13 @@ var bio =
 	},
 	"picture url" : "images/ken.jpg",
 	"welcomeMessage" : "Welcome Future Employers!",
-	"biopic" : "images/ken.jpg",
+	"biopic" : "images/profile.jpg",
 	"skills" : ["C++", "Java", "Python", "HTML5", "CSS3", "JavaScript", "Android", "iOS"],
 	"display" : function() {
 		var header = $('#header');
-		header.prepend(HTMLwelcomeMsg.replace(data, this.welcomeMessage));
-		header.prepend(HTMLbioPic.replace(data, this.biopic));
+		var headerContent = $('#headerContent');
+
+		$('#headerimg').prepend(HTMLbioPic.replace(data, this.biopic));
 		header.prepend(HTMLheaderRole.replace(data,this.role));
 		header.prepend(HTMLheaderName.replace(data,this.name));
 		var topContacts = $('#topContacts');
@@ -28,12 +29,13 @@ var bio =
 		topContacts.append(HTMLlocation.replace(data, this.contacts.location));
 		if(this.skills && this.skills.length > 0)
 		{
-			$('#header').append(HTMLskillsStart);
+			headerContent.append(HTMLskillsStart);
 			for(i = 0, x = this.skills.length; i < x; ++i)
 			{
 				$('#skills').append(HTMLskills.replace(data, this.skills[i]));
 			}
 		}
+		headerContent.prepend(HTMLwelcomeMsg.replace(data, this.welcomeMessage));
 	}
 };
 
@@ -174,13 +176,6 @@ var projects =
 	}
 }
 
-// Append Everything
-bio.display();
-work.display();
-projects.display();
-education.display();
-$('#mapDiv').append(googleMap);
-
 // Click Listener
 var locationArray = [];
 
@@ -202,8 +197,39 @@ function inName()
 	return splitName.join(" ");
 }
 
+function appendAllData()
+{
+	bio.display();
+	work.display();
+	projects.display();
+	education.display();
+	$('#mapDiv').append(googleMap);
 
 
+	if(document.getElementsByClassName('flex-item').length === 0) {
+		document.getElementById('topContacts').style['background-color'] = 'black';
+	}
+	if(document.getElementsByTagName('h1').length === 0) {
+		document.getElementById('header').style['background-color'] = 'black';
+	}
+	if(document.getElementsByClassName('work-entry').length === 0) {
+		document.getElementById('workExperience')['background-color'] = 'black';
+	}
+	if(document.getElementsByClassName('project-entry').length === 0) {
+		document.getElementById('projects').style['background-color'] = 'black';
+	}
+	if(document.getElementsByClassName('education-entry').length === 0) {
+		document.getElementById('education').style['background-color'] = 'black';
+	}
+	if(document.getElementsByClassName('flex-item').length === 0) {
+		document.getElementById('letsConnect').style['background-color'] = 'black';
+	}
+	if(document.getElementById('map') === null) {
+		document.getElementById('mapDiv').style['background-color'] = 'black';
+	}
+}
+
+$(appendAllData);
 /*
 var formattedContact = HTMLcontactGeneric.replace("%contact%", bio["contact info"]);
 
