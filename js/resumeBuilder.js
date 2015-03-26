@@ -16,17 +16,59 @@ var bio =
 	"biopic" : "images/profile.jpg",
 	"skills" : ["C++", "Java", "Python", "HTML5", "CSS3", "JavaScript", "Android", "iOS"],
 	"display" : function() {
-		var header = $('#header');
-		var headerContent = $('#headerContent');
 
-		$('#headerimg').prepend(HTMLbioPic.replace(data, this.biopic));
+		// Variables containing divs to be inserted
+		var HTMLheaderName = '<h1 id="name" class="light-yellow-text profile-header">%data%</h1>';
+		var HTMLheaderRole = '<span class="white-text">%data%</span><hr/>';
+
+		var HTMLbioPic = '<img src="%data%" class="biopic img-responsive">';
+		var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
+
+		var HTMLcontactGeneric = '<li class="flex-item"><span class="light-yellow-text">%contact%</span><span class="white-text">%data%</span></li>';
+		var HTMLmobile = '<li class="flex-item"><span class="light-yellow-text">mobile</span><span class="white-text">%data%</span></li>';
+		var HTMLemail = '<li class="flex-item"><span class="light-yellow-text">email</span><span class="white-text">%data%</span></li>';
+		var HTMLtwitter = '<li class="flex-item"><span class="light-yellow-text">twitter</span><span class="white-text">%data%</span></li>';
+		var HTMLgithub = '<li class="flex-item"><span class="light-yellow-text">github</span><span class="white-text">%data%</span></li>';
+		var HTMLblog = '<li class="flex-item"><span class="light-yellow-text">blog</span><span class="white-text">%data%</span></li>';
+		var HTMLlocation = '<li class="flex-item"><span class="light-yellow-text">location</span><span class="white-text">%data%</span></li>';
+
+		var HTMLskillsStart = '<h3 id="skillsH3" class="light-yellow-text">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
+		var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
+		var data = '%data%';
+
+		// Append Name and role
+		var header = $('#header');
 		header.prepend(HTMLheaderRole.replace(data,this.role));
 		header.prepend(HTMLheaderName.replace(data,this.name));
+
+		// Append header image
+		$('#headerimg').prepend(HTMLbioPic.replace(data, this.biopic));
+
+
+		// Append contact information
 		var topContacts = $('#topContacts');
-		topContacts.append(HTMLmobile.replace(data, this.contacts.mobile));
-		topContacts.append(HTMLemail.replace(data, this.contacts.email));
-		topContacts.append(HTMLgithub.replace(data, this.contacts.github));
-		topContacts.append(HTMLlocation.replace(data, this.contacts.location));
+		var bottomContacts = $('#footerContacts');
+
+		// Define function to append content to header and footer
+		var appendContact= function(appendData) {
+			topContacts.append(appendData);
+			bottomContacts.append(appendData);
+		};
+
+		var mobileContact = HTMLmobile.replace(data, this.contacts.mobile);
+		appendContact(mobileContact);
+
+		var emailContact = HTMLemail.replace(data, this.contacts.email);
+		appendContact(emailContact);
+
+		var githubContact = HTMLgithub.replace(data, this.contacts.github);
+		appendContact(githubContact);
+
+		var locationContact = HTMLlocation.replace(data, this.contacts.location);
+		appendContact(locationContact);
+
+		// Append all skills
+		var headerContent = $('#headerContent');
 		if(this.skills && this.skills.length > 0)
 		{
 			headerContent.append(HTMLskillsStart);
@@ -186,7 +228,7 @@ $(document).click(function(loc) {
 
 // Append internationalizeButton
 
-$('#main').append(internationalizeButton);
+$('.container').append(internationalizeButton);
 
 function inName()
 {
