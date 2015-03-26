@@ -1,5 +1,3 @@
-var data = '%data%';
-
 var bio =
 {
 	"name" : "Ken Ng",
@@ -117,6 +115,23 @@ var education = {
 	],
 	"display" : function () {
 		var eduDiv = $('#education');
+		var data = '%data%';
+
+		// String variables that contain htm to insert
+		var HTMLschoolStart = '<div class="education-entry"></div>';
+		var HTMLschoolName = '<a href="#">%data%';
+		var HTMLschoolDegree = ' -- %data%</a>';
+		var HTMLschoolDates = '<div class="date-text">%data%</div>';
+		var HTMLschoolLocation = '<div class="location-text">%data%</div>';
+		var HTMLschoolMajor = '<em><br>Major: %data%</em>';
+
+		var HTMLonlineClasses = '<h3 class="dark-gray-color">Online Classes</h3>';
+		var HTMLonlineTitle = '<a href="#">%data%';
+		var HTMLonlineSchool = ' - %data%</a>';
+		var HTMLonlineDates = '<div class="date-text">%data%</div>';
+		var HTMLonlineURL = '<br><a href="#">%data%</a>';
+
+		// Insert all schools
 		for(var schoolIndex in this.schools)
 		{
 			eduDiv.append(HTMLschoolStart);
@@ -127,6 +142,8 @@ var education = {
 			schoolDiv.append(HTMLschoolLocation.replace(data, currentSchool.location));
 			schoolDiv.append(HTMLschoolMajor.replace(data, currentSchool.major.join(", ")));
 		}
+
+		// Insert all online classes
 		if(this.onlineCourses.length > 0)
 		{
 			eduDiv.append(HTMLonlineClasses);
@@ -178,6 +195,18 @@ var work =
 		}
 	],
 	"display" : function() {
+
+		// String variables that contain htm to insert
+		var data = '%data%';
+
+		var HTMLworkStart = '<div class="work-entry"></div>';
+		var HTMLworkEmployer = '<a href="#">%data%';
+		var HTMLworkTitle = ' - %data%</a>';
+		var HTMLworkDates = '<div class="date-text">%data%</div>';
+		var HTMLworkLocation = '<div class="location-text">%data%</div>';
+		var HTMLworkDescription = '<p><br>%data%</p>';
+
+		// Insert all jobs
 		for(var index in work.job)
 		{
 			$('#workExperience').append(HTMLworkStart);
@@ -201,7 +230,18 @@ var projects =
 		}
 	],
 	"display" : function() {
+
+		// String variables that contain htm to insert
 		var projectDiv = $('#projects');
+		var data = '%data%';
+
+		var HTMLprojectStart = '<div class="project-entry"></div>';
+		var HTMLprojectTitle = '<a href="#">%data%</a>';
+		var HTMLprojectDates = '<div class="date-text">%data%</div>';
+		var HTMLprojectDescription = '<p><br>%data%</p>';
+		var HTMLprojectImage = '<img src="%data%">';
+
+		// Insert all projects
 		for(var projectIndex in this.projects)
 		{
 			projectDiv.append(HTMLprojectStart);
@@ -227,7 +267,6 @@ $(document).click(function(loc) {
 });
 
 // Append internationalizeButton
-
 $('.container').append(internationalizeButton);
 
 function inName()
