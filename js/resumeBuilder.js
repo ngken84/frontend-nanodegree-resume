@@ -6,8 +6,6 @@ $(document).click(function(loc) {
 	console.log(locationArray);
 });
 
-// Append internationalizeButton
-$('.container').append(internationalizeButton);
 
 function inName()
 {
@@ -101,6 +99,8 @@ function appendAllData()
 		}
 	};
 
+
+	// education object contains all the information
 	var education = {
 		"schools" : [
 			{
@@ -184,6 +184,8 @@ function appendAllData()
 		}
 	};
 
+
+	// work object contains all the information regarding places that I have worked
 	var work =
 	{
 		"job" : [
@@ -280,12 +282,36 @@ function appendAllData()
 		}
 	}
 
+
+	//Display BIO information
 	bio.display();
+
+	//Display work information
 	work.display();
+
+	//Display project information
 	projects.display();
+
+	//Display education information
 	education.display();
+
+	//Add google map
+	var googleMap = '<div id="map"></div>';
 	$('#mapDiv').append(googleMap);
 	initializeMap(bio, education, work);
+
+	// Append internationalizeButton
+	var internationalizeButton = '<button>Internationalize</button>';
+	$('.container').append(internationalizeButton);
+
+	/*
+	The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
+	*/
+	$('button').click(function() {
+		console.log("Hello");
+		var iName = inName() || function(){};
+		$('#name').html(iName);
+	});
 
 	if(document.getElementsByClassName('flex-item').length === 0) {
 		document.getElementById('topContacts').style['background-color'] = 'black';
