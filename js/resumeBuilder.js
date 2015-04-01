@@ -285,7 +285,7 @@ function appendAllData()
 	projects.display();
 	education.display();
 	$('#mapDiv').append(googleMap);
-
+	initializeMap(bio, education, work);
 
 	if(document.getElementsByClassName('flex-item').length === 0) {
 		document.getElementById('topContacts').style['background-color'] = 'black';

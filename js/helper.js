@@ -49,7 +49,7 @@ var map;    // declares a global map variable
 /*
 Start here! initializeMap() is called when page is loaded.
 */
-function initializeMap() {
+function initializeMap(bio, education, work) {
 
   var locations;
 
@@ -66,7 +66,7 @@ function initializeMap() {
   locationFinder() returns an array of every location string from the JSONs
   written for bio, education, and work.
   */
-  function locationFinder() {
+  function locationFinder(bio, education, work) {
 
     // initializes an empty array
     var locations = [];
@@ -168,7 +168,7 @@ function initializeMap() {
   window.mapBounds = new google.maps.LatLngBounds();
 
   // locations is an array of location strings returned from locationFinder()
-  locations = locationFinder();
+  locations = locationFinder(bio, education, work);
 
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
@@ -179,9 +179,6 @@ function initializeMap() {
 /*
 Uncomment the code below when you're ready to implement a Google Map!
 */
-
-// Calls the initializeMap() function when the page loads
-window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
